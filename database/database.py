@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+from urllib.parse import quote_plus
 from dotenv import load_dotenv
 import os
 
@@ -7,7 +8,7 @@ load_dotenv()
 
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_USER = os.getenv("DB_USER", "root")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_PASSWORD = quote_plus(os.getenv("DB_PASSWORD", "Suman@2004"))
 DB_NAME = os.getenv("DB_NAME", "school_db")
 
 DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
@@ -22,11 +23,3 @@ def get_db():
         yield db
     finally:
         db.close()
-
-if __name__ == "__main__":
-    try:
-        connection = engine.connect()
-        print("✅ Database connected successfully!")
-        connection.close()
-    except Exception as e:
-        print(f"❌ Connection failed: {e}")
