@@ -1,22 +1,29 @@
 from pydantic import BaseModel
 from typing import Optional
-from datetime import datetime
 
 class StudentCreate(BaseModel):
-    name: str
-    email: str
-    phone: str
+    roll_number: str
+    name       : str
+    age        : int
+    gender     : str
+    phone      : Optional[str] = None
+    class_id   : int
 
 class StudentUpdate(BaseModel):
-    name: Optional[str] = None
-    email: Optional[str] = None
-    phone: Optional[str] = None
+    roll_number: Optional[str] = None
+    name       : Optional[str] = None
+    age        : Optional[int] = None
+    gender     : Optional[str] = None
+    phone      : Optional[str] = None
+    class_id   : Optional[int] = None
 
 class StudentResponse(BaseModel):
-    student_id: int
-    name: str
-    email: str
-    phone: str
-    created_at: Optional[datetime] = None
+    student_id : int
+    roll_number: str
+    name       : str
+    age        : int
+    gender     : str
+    phone      : Optional[str] = None
+    class_id   : int
 
     model_config = {"from_attributes": True}

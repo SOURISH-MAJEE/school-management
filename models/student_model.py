@@ -1,16 +1,16 @@
-from sqlalchemy import Column, Integer, String, TIMESTAMP
+from sqlalchemy import Column, Integer, String, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 from database.database import Base
-from models.class_model import student_class
-import datetime
 
 class Student(Base):
     __tablename__ = "student"
 
-    student_id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(100), nullable=False)
-    email = Column(String(100), unique=True)
-    phone = Column(String(15))
-    created_at = Column(TIMESTAMP, default=datetime.datetime.utcnow)
+    student_id  = Column(Integer, primary_key=True, autoincrement=True)
+    roll_number = Column(String(20), unique=True, nullable=False)
+    name        = Column(String(100), nullable=False)
+    age         = Column(Integer, nullable=False)
+    gender      = Column(Enum("Male", "Female", "Other"), nullable=False)
+    phone       = Column(String(15))
+    class_id    = Column(Integer, ForeignKey("class.class_id"), nullable=False)
 
-    classes = relationship("Class", secondary=student_class, back_populates="students")
+    student_class = relationship("Class", back_populates="students")

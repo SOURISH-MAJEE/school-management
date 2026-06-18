@@ -6,8 +6,8 @@ class Attendance(Base):
     __tablename__ = "attendance"
 
     attendance_id = Column(Integer, primary_key=True, autoincrement=True)
-    session_id = Column(Integer, ForeignKey("attendance_session.session_id"))
-    student_id = Column(Integer, ForeignKey("student.student_id"))
-    status = Column(Enum("Present", "Absent", "Late"), nullable=False)
+    session_id    = Column(Integer, ForeignKey("attendance_session.session_id"), nullable=False)
+    student_id    = Column(Integer, ForeignKey("student.student_id"), nullable=False)
+    status        = Column(Enum("Present", "Absent", "Late"), nullable=False)
 
     session = relationship("AttendanceSession", back_populates="attendances")
