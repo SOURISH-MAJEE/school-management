@@ -1,13 +1,15 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database.database import get_db
-from schemas.attendance_schema import AttendanceCreate, AttendanceUpdate, AttendanceResponse
+from schemas.attendance_schema import (
+    AttendanceCreate, AttendanceUpdate, AttendanceResponse)
 from query import attendance_query
 
 router = APIRouter(prefix="/attendance", tags=["Attendance"])
 
 @router.post("/", response_model=AttendanceResponse)
-def create_attendance(attendance: AttendanceCreate, db: Session = Depends(get_db)):
+def create_attendance(attendance: AttendanceCreate,
+                      db: Session = Depends(get_db)):
     return attendance_query.create_attendance(db, attendance)
 
 @router.get("/", response_model=list[AttendanceResponse])
@@ -21,8 +23,17 @@ def get_attendance_by_id(attendance_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Attendance not found")
     return attendance
 
+@router.get("/session/{session_id}", response_model=list[AttendanceResponse])
+def get_attendance_by_session(session_id: int, db: Session = Depends(get_db)):
+    return attendance_query.get_attendance_by_session(db, session_id)
+
+@router.get("/student/{student_id}", response_model=list[AttendanceResponse])
+def get_attendance_by_student(student_id: int, db: Session = Depends(get_db)):
+    return attendance_query.get_attendance_by_student(db, student_id)
+
 @router.put("/{attendance_id}", response_model=AttendanceResponse)
-def update_attendance(attendance_id: int, attendance: AttendanceUpdate, db: Session = Depends(get_db)):
+def update_attendance(attendance_id: int, attendance: AttendanceUpdate,
+                      db: Session = Depends(get_db)):
     updated = attendance_query.update_attendance(db, attendance_id, attendance)
     if not updated:
         raise HTTPException(status_code=404, detail="Attendance not found")

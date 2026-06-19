@@ -13,10 +13,16 @@ def get_all_students(db: Session):
     return db.query(Student).all()
 
 def get_student_by_id(db: Session, student_id: int):
-    return db.query(Student).filter(Student.student_id == student_id).first()
+    return db.query(Student).filter(
+        Student.student_id == student_id).first()
+
+def get_students_by_class(db: Session, class_id: int):
+    return db.query(Student).filter(
+        Student.class_id == class_id).all()
 
 def update_student(db: Session, student_id: int, student: StudentUpdate):
-    db_student = db.query(Student).filter(Student.student_id == student_id).first()
+    db_student = db.query(Student).filter(
+        Student.student_id == student_id).first()
     if not db_student:
         return None
     for key, value in student.model_dump(exclude_unset=True).items():
@@ -26,7 +32,8 @@ def update_student(db: Session, student_id: int, student: StudentUpdate):
     return db_student
 
 def delete_student(db: Session, student_id: int):
-    db_student = db.query(Student).filter(Student.student_id == student_id).first()
+    db_student = db.query(Student).filter(
+        Student.student_id == student_id).first()
     if not db_student:
         return None
     db.delete(db_student)

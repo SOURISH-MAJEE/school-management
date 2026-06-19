@@ -22,7 +22,8 @@ def get_class(class_id: int, db: Session = Depends(get_db)):
     return cls
 
 @router.put("/{class_id}", response_model=ClassResponse)
-def update_class(class_id: int, cls: ClassUpdate, db: Session = Depends(get_db)):
+def update_class(class_id: int, cls: ClassUpdate,
+                 db: Session = Depends(get_db)):
     updated = class_query.update_class(db, class_id, cls)
     if not updated:
         raise HTTPException(status_code=404, detail="Class not found")

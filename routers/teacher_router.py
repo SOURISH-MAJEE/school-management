@@ -22,7 +22,8 @@ def get_teacher(teacher_id: int, db: Session = Depends(get_db)):
     return teacher
 
 @router.put("/{teacher_id}", response_model=TeacherResponse)
-def update_teacher(teacher_id: int, teacher: TeacherUpdate, db: Session = Depends(get_db)):
+def update_teacher(teacher_id: int, teacher: TeacherUpdate,
+                   db: Session = Depends(get_db)):
     updated = teacher_query.update_teacher(db, teacher_id, teacher)
     if not updated:
         raise HTTPException(status_code=404, detail="Teacher not found")

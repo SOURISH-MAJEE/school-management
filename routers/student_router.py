@@ -21,8 +21,13 @@ def get_student(student_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Student not found")
     return student
 
+@router.get("/class/{class_id}", response_model=list[StudentResponse])
+def get_students_by_class(class_id: int, db: Session = Depends(get_db)):
+    return student_query.get_students_by_class(db, class_id)
+
 @router.put("/{student_id}", response_model=StudentResponse)
-def update_student(student_id: int, student: StudentUpdate, db: Session = Depends(get_db)):
+def update_student(student_id: int, student: StudentUpdate,
+                   db: Session = Depends(get_db)):
     updated = student_query.update_student(db, student_id, student)
     if not updated:
         raise HTTPException(status_code=404, detail="Student not found")

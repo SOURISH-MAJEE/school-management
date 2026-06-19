@@ -21,8 +21,13 @@ def get_subject(subject_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Subject not found")
     return subject
 
+@router.get("/teacher/{teacher_id}", response_model=list[SubjectResponse])
+def get_subjects_by_teacher(teacher_id: int, db: Session = Depends(get_db)):
+    return subject_query.get_subjects_by_teacher(db, teacher_id)
+
 @router.put("/{subject_id}", response_model=SubjectResponse)
-def update_subject(subject_id: int, subject: SubjectUpdate, db: Session = Depends(get_db)):
+def update_subject(subject_id: int, subject: SubjectUpdate,
+                   db: Session = Depends(get_db)):
     updated = subject_query.update_subject(db, subject_id, subject)
     if not updated:
         raise HTTPException(status_code=404, detail="Subject not found")

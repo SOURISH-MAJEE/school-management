@@ -9,4 +9,5 @@ class Class(Base):
     class_name = Column(String(50), nullable=False)
     section    = Column(String(10), nullable=False)
 
+    # One class has many students
     students = relationship("Student", back_populates="student_class")

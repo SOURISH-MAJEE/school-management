@@ -13,10 +13,12 @@ def get_all_teachers(db: Session):
     return db.query(Teacher).all()
 
 def get_teacher_by_id(db: Session, teacher_id: int):
-    return db.query(Teacher).filter(Teacher.teacher_id == teacher_id).first()
+    return db.query(Teacher).filter(
+        Teacher.teacher_id == teacher_id).first()
 
 def update_teacher(db: Session, teacher_id: int, teacher: TeacherUpdate):
-    db_teacher = db.query(Teacher).filter(Teacher.teacher_id == teacher_id).first()
+    db_teacher = db.query(Teacher).filter(
+        Teacher.teacher_id == teacher_id).first()
     if not db_teacher:
         return None
     for key, value in teacher.model_dump(exclude_unset=True).items():
@@ -26,7 +28,8 @@ def update_teacher(db: Session, teacher_id: int, teacher: TeacherUpdate):
     return db_teacher
 
 def delete_teacher(db: Session, teacher_id: int):
-    db_teacher = db.query(Teacher).filter(Teacher.teacher_id == teacher_id).first()
+    db_teacher = db.query(Teacher).filter(
+        Teacher.teacher_id == teacher_id).first()
     if not db_teacher:
         return None
     db.delete(db_teacher)
