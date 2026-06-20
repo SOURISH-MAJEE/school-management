@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teachers</title>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="teachers.html" class="active">Teachers</a>
+    <a href="students.html">Students</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="classes.html">Classes</a>
+    <a href="attendance.html">Attendance</a>
+</nav>
+
+<div class="container">
+    <h1>Teachers</h1>
+
+    <div class="card">
+        <h2>Add Teacher</h2>
+        <div id="t-msg" class="msg"></div>
+        <input id="t-name" placeholder="Name" />
+        <input id="t-age" placeholder="Age" type="number" />
+        <select id="t-gender">
+            <option value="">Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+        <input id="t-email" placeholder="Email" />
+        <input id="t-phone" placeholder="Phone" />
+        <br>
+        <button onclick="addTeacher()">Add Teacher</button>
+    </div>
+
+    <div class="card">
+        <h2>All Teachers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="t-list"></tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

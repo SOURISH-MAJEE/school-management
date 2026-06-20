@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="students.html">Students</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="classes.html">Classes</a>
+    <a href="attendance.html">Attendance</a>
+</nav>
+
+<div class="container">
+    <h1>Dashboard</h1>
+
+    <div class="stats">
+        <div class="stat-box">
+            <h2 id="t-count">0</h2>
+            <p>Teachers</p>
+        </div>
+        <div class="stat-box">
+            <h2 id="s-count">0</h2>
+            <p>Students</p>
+        </div>
+        <div class="stat-box">
+            <h2 id="sub-count">0</h2>
+            <p>Subjects</p>
+        </div>
+        <div class="stat-box">
+            <h2 id="c-count">0</h2>
+            <p>Classes</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Teachers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="d-teachers"></tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Students</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="d-students"></tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

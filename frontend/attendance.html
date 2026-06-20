@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="students.html">Students</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="classes.html">Classes</a>
+    <a href="attendance.html" class="active">Attendance</a>
+</nav>
+
+<div class="container">
+    <h1>Attendance</h1>
+
+    <div class="card">
+        <h2>Create Session</h2>
+        <div id="ses-msg" class="msg"></div>
+        <select id="ses-class"><option value="">Select Class</option></select>
+        <select id="ses-subject"><option value="">Select Subject</option></select>
+        <select id="ses-teacher"><option value="">Select Teacher</option></select>
+        <input id="ses-date" type="date" />
+        <input id="ses-period" placeholder="Period No" type="number" />
+        <br>
+        <button onclick="addSession()">Create Session</button>
+    </div>
+
+    <div class="card">
+        <h2>Mark Attendance</h2>
+        <div id="att-msg" class="msg"></div>
+        <select id="att-session"><option value="">Select Session</option></select>
+        <select id="att-student"><option value="">Select Student</option></select>
+        <select id="att-status">
+            <option value="">Status</option>
+            <option>Present</option>
+            <option>Absent</option>
+            <option>Late</option>
+        </select>
+        <br>
+        <button onclick="markAttendance()">Mark Attendance</button>
+    </div>
+
+    <div class="card">
+        <h2>Attendance Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Session</th>
+                    <th>Student</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="att-list"></tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

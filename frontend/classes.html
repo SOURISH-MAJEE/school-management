@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classes</title>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="teachers.html">Teachers</a>
+    <a href="students.html">Students</a>
+    <a href="subjects.html">Subjects</a>
+    <a href="classes.html" class="active">Classes</a>
+    <a href="attendance.html">Attendance</a>
+</nav>
+
+<div class="container">
+    <h1>Classes</h1>
+
+    <div class="card">
+        <h2>Add Class</h2>
+        <div id="c-msg" class="msg"></div>
+        <input id="c-name" placeholder="Class Name" />
+        <input id="c-section" placeholder="Section" />
+        <button onclick="addClass()">Add Class</button>
+    </div>
+
+    <div class="card">
+        <h2>All Classes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Class Name</th>
+                    <th>Section</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="c-list"></tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
