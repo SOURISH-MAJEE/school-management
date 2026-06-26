@@ -11,6 +11,6 @@ class Teacher(Base):
     gender     = Column(Enum("Male", "Female", "Other"), nullable=False)
     email      = Column(String(100), unique=True, nullable=False)
     phone      = Column(String(15), nullable=False)
+    password   = Column(String(255), nullable=False)
 
-    # One teacher teaches many subjects
     subjects = relationship("Subject", back_populates="teacher")

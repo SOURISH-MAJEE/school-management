@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="teacher_dashboard.html" class="active">Dashboard</a>
+    <a href="#" onclick="showSection('subjects')">My Subjects</a>
+    <a href="#" onclick="showSection('create-session')">Create Session</a>
+    <a href="#" onclick="showSection('mark-attendance')">Mark Attendance</a>
+    <a href="#" onclick="logout()">Logout</a>
+</nav>
+
+<div class="container">
+
+    <!-- WELCOME -->
+    <div class="card">
+        <h1>Welcome, <span id="teacher-name">...</span>!</h1>
+        <p id="teacher-email" style="color:#666; margin-top:5px;"></p>
+    </div>
+
+    <!-- MY PROFILE -->
+    <div id="section-profile" class="card">
+        <h2>My Profile</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="teacher-profile"></tbody>
+        </table>
+    </div>
+
+    <!-- MY SUBJECTS -->
+    <div id="section-subjects" class="card">
+        <h2>My Subjects</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject ID</th>
+                    <th>Subject Name</th>
+                </tr>
+            </thead>
+            <tbody id="teacher-subjects"></tbody>
+        </table>
+    </div>
+
+    <!-- CREATE SESSION -->
+    <div id="section-create-session" class="card">
+        <h2>Create Attendance Session</h2>
+        <div id="session-msg" class="msg"></div>
+        <select id="ses-class"><option value="">Select Class</option></select>
+        <select id="ses-subject"><option value="">Select Subject</option></select>
+        <input id="ses-date" type="date" />
+        <input id="ses-period" type="number" placeholder="Period No" />
+        <br><br>
+        <button onclick="createSession()">Create Session</button>
+
+        <h2 style="margin-top:20px;">My Sessions</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Session ID</th>
+                    <th>Class</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody id="my-sessions"></tbody>
+        </table>
+    </div>
+
+    <!-- MARK ATTENDANCE -->
+    <div id="section-mark-attendance" class="card">
+        <h2>Mark Attendance</h2>
+        <div id="att-msg" class="msg"></div>
+
+        <select id="att-session" onchange="loadStudentsForSession()">
+            <option value="">Select Session</option>
+        </select>
+        <br><br>
+
+        <table id="student-att-table" style="display:none">
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="students-to-mark"></tbody>
+        </table>
+        <br>
+        <button id="submit-att-btn" style="display:none"
+            onclick="submitAttendance()">
+            Submit Attendance
+        </button>
+    </div>
+
+</div>
+
+<script src="js/teacher_dashboard.js"></script>
+</body>
+</html>

@@ -8,6 +8,7 @@ class StudentCreate(BaseModel):
     gender      : str
     phone       : Optional[str] = None
     class_id    : int
+    password    : str  # plain password from user
 
 class StudentUpdate(BaseModel):
     roll_number : Optional[str] = None
@@ -16,6 +17,7 @@ class StudentUpdate(BaseModel):
     gender      : Optional[str] = None
     phone       : Optional[str] = None
     class_id    : Optional[int] = None
+    password    : Optional[str] = None
 
 class StudentResponse(BaseModel):
     student_id  : int
@@ -25,5 +27,6 @@ class StudentResponse(BaseModel):
     gender      : str
     phone       : Optional[str] = None
     class_id    : int
+    # NOTE: password NOT included in response for security!
 
     model_config = {"from_attributes": True}

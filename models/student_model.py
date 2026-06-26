@@ -11,8 +11,7 @@ class Student(Base):
     age         = Column(Integer, nullable=False)
     gender      = Column(Enum("Male", "Female", "Other"), nullable=False)
     phone       = Column(String(15))
-    class_id    = Column(Integer, ForeignKey("class.class_id"),
-                         nullable=False)
+    class_id    = Column(Integer, ForeignKey("class.class_id"), nullable=False)
+    password    = Column(String(255), nullable=False)
 
-    # Many students belong to one class
     student_class = relationship("Class", back_populates="students")

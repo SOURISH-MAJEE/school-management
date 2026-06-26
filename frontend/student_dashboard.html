@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="student_dashboard.html" class="active">Dashboard</a>
+    <a href="#" onclick="logout()">Logout</a>
+</nav>
+
+<div class="container">
+
+    <!-- WELCOME -->
+    <div class="card">
+        <h1>Welcome, <span id="student-name">...</span>!</h1>
+        <p id="student-roll" style="color:#666; margin-top:5px;"></p>
+    </div>
+
+    <!-- MY PROFILE -->
+    <div class="card">
+        <h2>My Profile</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Class</th>
+                </tr>
+            </thead>
+            <tbody id="student-profile"></tbody>
+        </table>
+    </div>
+
+    <!-- ATTENDANCE SUMMARY -->
+    <div class="card">
+        <h2>My Attendance Summary</h2>
+        <div class="stats">
+            <div class="stat-box">
+                <h2 id="present-count">0</h2>
+                <p style="color:green">✅ Present</p>
+            </div>
+            <div class="stat-box">
+                <h2 id="absent-count">0</h2>
+                <p style="color:red">Absent</p>
+            </div>
+            <div class="stat-box">
+                <h2 id="late-count">0</h2>
+                <p style="color:orange">Late</p>
+            </div>
+            <div class="stat-box">
+                <h2 id="total-count">0</h2>
+                <p>Total Classes</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MY ATTENDANCE RECORDS -->
+    <div class="card">
+        <h2>My Attendance Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th>Period</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-records"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="js/student_dashboard.js"></script>
+</body>
+</html>
