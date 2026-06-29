@@ -1,55 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login - School MS</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .login-box { max-width:400px; margin:80px auto; }
-        .tab-btns { display:flex; margin-bottom:20px; }
-        .tab-btn { flex:1; padding:12px; border:none; cursor:pointer; font-size:15px; background:#ddd; }
-        .tab-btn.active { background:#000000; color:white; }
-        .tab-btn:first-child { border-radius:5px 0 0 5px; }
-        .tab-btn:last-child  { border-radius:0 5px 5px 0; }
-        .form { display:none; }
-        .form.active { display:block; }
-        .form input { width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px; box-sizing:border-box; }
-        .form button { width:100%; padding:12px; background:#2c3e50; color:white; border:none; border-radius:5px; font-size:15px; cursor:pointer; margin-top:5px; }
-        .form button:hover { background:#3498db; }
-        .title { text-align:center; margin-bottom:25px; color:#2c3e50; }
-    </style>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
 <div class="login-box">
     <h1 class="title">School Management</h1>
 
-    <div class="tab-btns">
-        <button class="tab-btn active" onclick="switchTab('teacher', this)">
-            Teacher Login
+    <div class="user-tabs">
+        <button class="user-tab active"
+            onclick="switchUser('teacher', this)">
+            Teacher
         </button>
-        <button class="tab-btn" onclick="switchTab('student', this)">
-            Student Login
+        <button class="user-tab"
+            onclick="switchUser('student', this)">
+            Student
         </button>
     </div>
 
     <div class="card">
 
-        <!-- TEACHER FORM -->
-        <div id="teacher-form" class="form active">
-            <h2>Teacher Login</h2>
-            <div id="t-msg" class="msg"></div>
-            <input id="t-email" type="email" placeholder="Enter your Email" />
-            <input id="t-password" type="password" placeholder="Enter your Password" />
-            <button onclick="teacherLogin()">Login</button>
+        <div id="teacher-section">
+            <div class="action-tabs">
+                <button class="action-tab active"
+                    onclick="switchAction('teacher', 'login', this)">
+                    Login
+                </button>
+                <button class="action-tab"
+                    onclick="switchAction('teacher', 'signup', this)">
+                    Sign Up
+                </button>
+            </div>
+
+            <div id="teacher-login" class="form-section active">
+                <div id="t-login-msg" class="msg"></div>
+                <input id="tl-email" type="email" placeholder="Enter Email" />
+                <input id="tl-password" type="password" placeholder="Enter Password" />
+                <button onclick="teacherLogin()">Login</button>
+            </div>
+
+            <div id="teacher-signup" class="form-section">
+                <div id="t-signup-msg" class="msg"></div>
+                <input id="ts-name" placeholder="Full Name" />
+                <input id="ts-age" placeholder="Age" type="number" />
+                <select id="ts-gender">
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+                <input id="ts-email" type="email" placeholder="Email" />
+                <input id="ts-phone" placeholder="Phone Number" />
+                <input id="ts-password" type="password" placeholder="Create Password" />
+                <input id="ts-confirm" type="password" placeholder="Confirm Password" />
+                <button onclick="teacherSignup()">Create Account</button>
+            </div>
         </div>
 
-        <!-- STUDENT FORM -->
-        <div id="student-form" class="form">
-            <h2>Student Login</h2>
-            <div id="s-msg" class="msg"></div>
-            <input id="s-roll" type="text" placeholder="Enter your Roll Number" />
-            <input id="s-password" type="password" placeholder="Enter your Password" />
-            <button onclick="studentLogin()">Login</button>
+        <div id="student-section" style="display:none">
+            <div class="action-tabs">
+                <button class="action-tab active"
+                    onclick="switchAction('student', 'login', this)">
+                    Login
+                </button>
+                <button class="action-tab"
+                    onclick="switchAction('student', 'signup', this)">
+                    Sign Up
+                </button>
+            </div>
+
+            <div id="student-login" class="form-section active">
+                <div id="s-login-msg" class="msg"></div>
+                <input id="sl-roll" placeholder="Enter Roll Number" />
+                <input id="sl-password" type="password" placeholder="Enter Password" />
+                <button onclick="studentLogin()">Login</button>
+            </div>
+
+            <div id="student-signup" class="form-section">
+                <div id="s-signup-msg" class="msg"></div>
+                <input id="ss-roll" placeholder="Roll Number" />
+                <input id="ss-name" placeholder="Full Name" />
+                <input id="ss-age" placeholder="Age" type="number" />
+                <select id="ss-gender">
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+                <input id="ss-phone" placeholder="Phone Number" />
+                <select id="ss-class">
+                    <option value="">Select Class</option>
+                </select>
+                <input id="ss-password" type="password" placeholder="Create Password" />
+                <input id="ss-confirm" type="password" placeholder="Confirm Password" />
+                <button onclick="studentSignup()">Create Account</button>
+            </div>
         </div>
 
     </div>

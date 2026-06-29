@@ -35,7 +35,7 @@ function logout() {
     window.location.href = "login.html";
 }
 
-// ─── LOAD PROFILE ───
+
 async function loadProfile() {
     const res  = await fetch(API + "/teachers/" + userId);
     const data = await res.json();
@@ -50,7 +50,7 @@ async function loadProfile() {
     </tr>`;
 }
 
-// ─── LOAD MY SUBJECTS ───
+
 async function loadMySubjects() {
     const res  = await fetch(API + "/subjects/teacher/" + userId);
     const data = await res.json();
@@ -66,7 +66,7 @@ async function loadMySubjects() {
         rows || "<tr><td colspan='2'>No subjects assigned yet</td></tr>";
 }
 
-// ─── LOAD CREATE SESSION PAGE ───
+
 async function loadCreateSession() {
     const classes  = await fetch(API + "/classes/").then(r => r.json());
     const subjects = await fetch(API + "/subjects/teacher/" + userId).then(r => r.json());
@@ -108,7 +108,7 @@ async function loadCreateSession() {
         rows || "<tr><td colspan='5'>No sessions created yet</td></tr>";
 }
 
-// ─── CREATE SESSION ───
+
 async function createSession() {
     const classId   = document.getElementById("ses-class").value;
     const subjectId = document.getElementById("ses-subject").value;
@@ -140,7 +140,7 @@ async function createSession() {
     }
 }
 
-// ─── LOAD MARK ATTENDANCE ───
+
 async function loadMarkAttendance() {
     const sessions = await fetch(API + "/attendance-sessions/").then(r => r.json());
 
@@ -156,7 +156,7 @@ async function loadMarkAttendance() {
     }
 }
 
-// ─── LOAD STUDENTS FOR SESSION ───
+
 async function loadStudentsForSession() {
     const sessionId = document.getElementById("att-session").value;
     if (!sessionId) return;
@@ -199,7 +199,7 @@ async function loadStudentsForSession() {
     window.currentSessionId = sessionId;
 }
 
-// ─── SUBMIT ATTENDANCE ───
+
 async function submitAttendance() {
     const sessionId = window.currentSessionId;
     const students  = window.currentStudents;
@@ -230,11 +230,11 @@ async function submitAttendance() {
 
     if (successCount > 0) {
         showMsg("att-msg",
-            `✅ Attendance marked for ${successCount} students!`, "success");
+            `Attendance marked for ${successCount} students!`, "success");
     }
     if (errorCount > 0) {
         showMsg("att-msg",
-            `⚠️ ${errorCount} records already exist!`, "error");
+            `${errorCount} records already exist!`, "error");
     }
 }
 

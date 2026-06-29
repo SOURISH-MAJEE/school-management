@@ -10,6 +10,6 @@ class StudentLogin(BaseModel):
 
 class LoginResponse(BaseModel):
     message    : str
-    user_type  : str  # "teacher" or "student"
+    user_type  : str  
     user_id    : int
     name       : str

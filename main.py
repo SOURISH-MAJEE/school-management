@@ -12,7 +12,8 @@ from routers import (
     class_router, attendance_router, attendance_session_router
 )
 
-# ── ADD THIS LINE ──
+
+
 from routers import auth_router
 
 Base.metadata.create_all(bind=engine)
@@ -34,7 +35,7 @@ app.include_router(class_router.router)
 app.include_router(attendance_router.router)
 app.include_router(attendance_session_router.router)
 
-# ── ADD THIS LINE ──
+
 app.include_router(auth_router.router)
 
 @app.get("/")

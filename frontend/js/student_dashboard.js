@@ -19,7 +19,6 @@ function logout() {
     window.location.href = "login.html";
 }
 
-// ─── LOAD PROFILE ───
 async function loadProfile() {
     const res     = await fetch(API + "/students/" + userId);
     const student = await res.json();
@@ -41,7 +40,6 @@ async function loadProfile() {
     </tr>`;
 }
 
-// ─── LOAD ATTENDANCE ───
 async function loadAttendance() {
     const records  = await fetch(API + "/attendance/student/" + userId).then(r => r.json());
     const sessions = await fetch(API + "/attendance-sessions/").then(r => r.json());

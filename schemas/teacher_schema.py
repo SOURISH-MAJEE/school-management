@@ -7,7 +7,7 @@ class TeacherCreate(BaseModel):
     gender   : str
     email    : str
     phone    : str
-    password : str  # plain password from user
+    password : str  
 
 class TeacherUpdate(BaseModel):
     name     : Optional[str] = None
@@ -24,6 +24,6 @@ class TeacherResponse(BaseModel):
     gender     : str
     email      : str
     phone      : str
-    # NOTE: password NOT included in response for security!
+    
 
     model_config = {"from_attributes": True}
